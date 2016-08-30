@@ -1,0 +1,11 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'Gemfile'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+  TargetRubyVersion: 2.3

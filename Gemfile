@@ -18,7 +18,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '~> 2.0'
   gem 'meta_request', '~> 0.4.0'
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
@@ -36,4 +35,9 @@ group :development, :test do
   gem 'rb-fsevent', '~> 0.9.7'
   gem 'spring', '~> 1.7', '>= 1.7.1'
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
+  gem 'rubocop', '~> 0.42.0'
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
 end
