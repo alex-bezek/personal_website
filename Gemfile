@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
-gem 'sqlite3'
+gem 'mysql2', '~> 0.4.4'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -12,15 +12,30 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+
 group :development, :test do
-  gem 'byebug', platform: :mri
-end
-
-group :development do
-  gem 'web-console'
+  gem 'byebug'
+  gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
-  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
+  gem 'web-console', '~> 2.0'
+  gem 'meta_request', '~> 0.4.0'
+  gem 'better_errors', '~> 2.1', '>= 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
+  gem 'awesome_print', '~> 1.6', '>= 1.6.1'
+  # TODO: Fix dependency issues
+  # gem 'quiet_assets', '~> 1.1'
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'guard', '~> 2.14'
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.2'
+  gem 'guard-rails', '~> 0.7.2'
+  gem 'guard-shell', '~> 0.7.1'
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
+  # # if on mac do `brew install terminal-notifier`
+  gem 'terminal-notifier-guard', '~> 1.7'
+  gem 'rb-fsevent', '~> 0.9.7'
+  gem 'spring', '~> 1.7', '>= 1.7.1'
+  gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
+
+end
