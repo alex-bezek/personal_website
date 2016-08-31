@@ -8,4 +8,5 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
+    - 'Guardfile'
   TargetRubyVersion: 2.3
