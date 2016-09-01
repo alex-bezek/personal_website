@@ -1,6 +1,7 @@
 *.rbc
 capybara-*.html
 /log
+*.log
 /tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -11,6 +12,10 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
+# css from gems
+/app/assets/stylesheets/plugins
+/app/assets/stylesheets/base/bitters
+
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
 .env
@@ -18,6 +23,7 @@ pickle-email-*.html
 ## Environment normalization:
 /.bundle
 /vendor/bundle
+/node_modules
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset

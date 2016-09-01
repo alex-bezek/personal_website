@@ -5,12 +5,15 @@ gem 'rails', '~> 5.0.0'
 # Add back in if a database is needed
 # gem 'mysql2', '~> 0.4.4'
 gem 'puma', '~> 3.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
+gem "haml-rails", "~> 0.9"
 gem 'rails_12factor', '~> 0.0.3'
+
+gem 'sass-rails', '~> 5.0'
+gem 'bourbon', '~> 5.0.0.beta.6'
+gem 'neat', '~> 1.8'
+gem 'bitters', '~> 1.4'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

@@ -1,0 +1,20 @@
+{
+  "name": "personal_website",
+  "version": "1.0.0",
+  "description": "A rails app to serve as my personal web site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alex-bezek/personal_website"
+  },
+  "author": "alex-bezek",
+  "license": "MIT",
+  "scripts": {
+    "webpack": "webpack"
+  },
+  "dependencies": {
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^1.13.2"
+  }
+}
