@@ -22,5 +22,5 @@ chdir APP_ROOT do
   system! 'bin/rails log:clear tmp:clear'
 
   puts "\n== Resolving and compiling assets =="
-  system "bundle exec spring rake assets:bourbon"
+  system "bundle exec rake assets:bourbon"
 end
