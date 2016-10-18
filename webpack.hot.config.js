@@ -9,7 +9,7 @@ module.exports = {
     application: './js/index.js'
   },
   output: {
-    filename: '[name].self.js',
+    filename: '[name].js',
     publicPath: 'http://localhost:8080/assets',
     libraryTarget: 'umd',
   },
@@ -34,7 +34,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('[name].self.css', { allChunks: true }),
+    new ExtractTextPlugin('[name].css', { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
