@@ -38,12 +38,7 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   # config.active_record.migration_error = :page_load
 
-  # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
-  config.assets.debug = true
-
-  # Suppress logger output for asset requests.
+  # =>  Suppress logger output for asset requests.
   config.assets.quiet = true
 
   # Raises error for missing translations
@@ -52,4 +47,23 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.assets.compile = true
+  config.assets.digest = false
+
+  unless ENV['SERVE_ASSETS_FROM_PUBLIC'] == 'true'
+    # Debug mode disables concatenation and preprocessing of assets.
+    # This option may cause significant delays in view rendering with a large
+    # number of complex assets.
+    config.assets.debug = true
+
+    config.action_controller.asset_host = proc do |asset_source|
+      'http://localhost:8080/' if asset_source =~ /\/assets\/.*/i
+    end
+
+    if ENV['WEBPACK_DEV_SERVER'] == 'true'
+      webpack_pid = spawn('npm run dev')
+      Process.detach(webpack_pid)
+    end
+  end
 end

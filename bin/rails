@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+
+# Only start up the webpack dev server if running the Rails server.
+# All other Rails commands will ignore the webpack initializer from running.
+ENV['WEBPACK_DEV_SERVER'] ||= 'true' if ARGV.find_index { |element| ['s', 'server'].include?(element) }
+
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative '../config/boot'
 require 'rails/commands'
