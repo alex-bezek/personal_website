@@ -61,7 +61,7 @@ Rails.application.configure do
     `rm -rf tmp/assets`
     `npm run webpack`
     config.action_controller.asset_host = proc do |asset_source|
-      'http://localhost:8080/' if asset_source =~ /\/assets\/.*/i
+      'http://localhost:8080/' if asset_source =~ /\/assets\/.*.(js|css)/i
     end
 
     if ENV['WEBPACK_DEV_SERVER'] == 'true'
