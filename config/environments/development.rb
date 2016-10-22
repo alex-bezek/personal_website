@@ -56,10 +56,6 @@ Rails.application.configure do
     # This option may cause significant delays in view rendering with a large
     # number of complex assets.
 
-    # TODO: Fix this hack
-    # add assets to the tmp/assets folder so assets path resolve to /assets instead of /stylesheets and /javascripts
-    `rm -rf tmp/assets`
-    `npm run webpack`
     config.action_controller.asset_host = proc do |asset_source|
       'http://localhost:8080/' if asset_source =~ /\/assets\/.*.(js|css)/i
     end

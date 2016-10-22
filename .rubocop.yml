@@ -9,4 +9,4 @@ AllCops:
     - config/**/*
     - bin/**/*
     - Guardfile
-    - node_modules/*/**
+    - node_modules/**/*

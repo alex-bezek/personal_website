@@ -9,8 +9,8 @@ module.exports = {
     application: './js/index.js'
   },
   output: {
-    filename: '[name].js',
-    publicPath: 'http://localhost:8080/assets',
+    filename: './javascripts/[name].js',
+    publicPath: 'http://localhost:8080/',
     libraryTarget: 'umd',
   },
   include: path.resolve(__dirname, 'node_modules'),
