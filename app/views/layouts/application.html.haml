@@ -4,6 +4,8 @@
     %title PersonalWebsite
     = csrf_meta_tags
     = stylesheet_link_tag 'application'
+  = render partial: 'application/navigation'
   %body
-    = yield
+    %section.container
+      = yield
   = javascript_include_tag 'application'
