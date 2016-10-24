@@ -13,7 +13,7 @@ In dev mode, assets are watched by webpack and served out of the devserver on po
 Wepack watchs our stylesheets and javascript files. It allows us to use special loaders as well. So the stylesheets are written in scss, and the javascript is ES6. Webpack handles transpiling these assets and bundling them up.
 
 ###### Framework
-The css framework I went with is bourbon. Its not a true framework but rather is a grid system with a lot of sass mixins. The point is to not rely on pre-built templates and instead be forced to write a lot of my own frontend. 
+The css framework I went with is bourbon. Its not a true framework but rather is a grid system with a lot of sass mixins. The point is to not rely on pre-built templates and instead be forced to write a lot of my own frontend.
 
 ### Docker
 Containers are the way of the future and make deploying to the cloud even easier. I have used alpine to minimize size and for security concerns. It takes a bit more effort having to add particular packages and build dependencies. Build the docker container with
@@ -29,4 +29,4 @@ After running `bin/setup` just run `bundle exec guard` to launch guard and it wi
 ### Environment Variables
 * RAILS_ENV : used to set the rails environment to production mode when deploying
 * SECRET_KEY_BASE : required when running in production mode
-* RAILS_SERVE_STATIC_FILES
+* RAILS_SERVE_STATIC_FILES : Configures when in production mode if rails should serve the static assets from its public folder
