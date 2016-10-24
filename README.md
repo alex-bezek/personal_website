@@ -29,4 +29,5 @@ After running `bin/setup` just run `bundle exec guard` to launch guard and it wi
 ### Environment Variables
 * RAILS_ENV : used to set the rails environment to production mode when deploying
 * SECRET_KEY_BASE : required when running in production mode
-* RAILS_SERVE_STATIC_FILES : Configures when in production mode if rails should serve the static assets from its public folder
+* WEBPACK_DEV_SERVER : Determines if the webpack dev server should run in the background. Dev mode only
+* SERVE_ASSETS_FROM_PUBLIC : Determines if assets should be served from public directory in dev mode as well. 

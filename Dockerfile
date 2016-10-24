@@ -1,9 +1,5 @@
 FROM ruby:2.3.1-alpine
 
-# Set any required ENV variables
-RUN RAILS_SERVE_STATIC_FILES=true
-RUN export RAILS_SERVE_STATIC_FILES
-
 RUN apk update && apk --update add ruby ruby-irb ruby-json ruby-rake \
     ruby-bigdecimal ruby-io-console libstdc++ tzdata nodejs
 
