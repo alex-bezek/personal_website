@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'bourbon', '~> 5.0.0.beta.6'
 gem 'neat', '~> 1.8'
 gem 'bitters', '~> 1.4'
+gem 'refills', '~> 0.2.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'

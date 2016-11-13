@@ -9,6 +9,7 @@ namespace :assets do
       'rm -rf app/assets/stylesheets/plugins/neat',
       'rm -rf neat',
       'rm -rf app/assets/stylesheets/base/bitters',
+      'rm -rf node_modules',
       'npm install',
       'bundle exec bourbon install --path app/assets/stylesheets/plugins',
       'bundle exec neat install',

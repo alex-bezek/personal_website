@@ -14,15 +14,17 @@ RUN apk --update add --virtual build-dependencies build-base ruby-dev openssl-de
     cd /myapp ; bundle install && \
     apk del build-dependencies
 
+COPY .nvmrc /myapp
+COPY package.json /myapp
+RUN npm install
+
 ADD . /myapp
+
+RUN bundle exec rake assets:precompile
+
 RUN chown -R nobody:nogroup /myapp
 USER nobody
 
 EXPOSE 3000
 
-# Set any required ENV variables
-RUN RAILS_SERVE_STATIC_FILES=true
-RUN export RAILS_SERVE_STATIC_FILES
-
-# RUN bundle exec rake assets:precompile
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

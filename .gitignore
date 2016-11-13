@@ -6,15 +6,17 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
+/public/assets
 /coverage/
 /spec/tmp
 **.orig
 rerun.txt
 pickle-email-*.html
 
-# css from gems
-/app/assets/stylesheets/plugins
-/app/assets/stylesheets/base/bitters
+# css from gems (but keep the folder structure)
+/app/assets/stylesheets/plugins/bourbon
+/app/assets/stylesheets/plugins/neat
+/app/assets/stylesheets/base/bitters/base
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed

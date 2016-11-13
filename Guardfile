@@ -13,7 +13,6 @@
 #  $ mv Guardfile config/
 #  $ ln -s config/Guardfile .
 #
-# and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
 guard 'livereload' do
   extensions = {
@@ -52,27 +51,7 @@ guard 'livereload' do
   watch(%r{app/views/.+\.(#{rails_view_exts * '|'})$})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{config/locales/.+\.yml})
-end
-
-# Guard-Rails supports a lot options with default values:
-# daemon: false                        # runs the server as a daemon.
-# debugger: false                      # enable ruby-debug gem.
-# environment: 'development'           # changes server environment.
-# force_run: false                     # kills any process that's holding the listen port before attempting to (re)start Rails.
-# pid_file: 'tmp/pids/[RAILS_ENV].pid' # specify your pid_file.
-# host: 'localhost'                    # server hostname.
-# port: 3000                           # server port number.
-# root: '/spec/dummy'                  # Rails' root path.
-# server: thin                         # webserver engine.
-# start_on_start: true                 # will start the server when starting Guard.
-# timeout: 30                          # waits untill restarting the Rails server, in seconds.
-# zeus_plan: server                    # custom plan in zeus, only works with `zeus: true`.
-# zeus: false                          # enables zeus gem.
-# CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
-
-guard 'rails' do
-  watch('Gemfile.lock')
-  watch(%r{^(config|lib)/.*})
+  watch(%r{tmp/assets/js/bundle.js}) { |_m| "/assets/javascripts/application.js"}
 end
 
 # Note: The cmd option is now required due to the increasing number of ways
@@ -129,9 +108,32 @@ guard :rspec, cmd: "bundle exec spring rspec" do
   end
 end
 
-# Add files and commands to this file, like the example:
-#   watch(%r{file/path}) { `command(s)` }
-#
+kill_webpack_cmd = "lsof -n -i:8080 | grep LISTEN | awk '{ print $2 }' | uniq | xargs kill -9"
 guard :shell do
-  watch(/package.json/) { `npm install` }
+  watch(/(.*).rb/) { |m| `bundle exec rubcop #{m[0]}` }
+  watch('Gemfile.lock') { `#{kill_webpack_cmd}` }
+  watch(%r{^(config)/.*}) { `#{kill_webpack_cmd}` }
+  watch(/(.*).config.js/) { `#{kill_webpack_cmd}` }
+end
+
+# Guard-Rails supports a lot options with default values:
+# daemon: false                        # runs the server as a daemon.
+# debugger: false                      # enable ruby-debug gem.
+# environment: 'development'           # changes server environment.
+# force_run: false                     # kills any process that's holding the listen port before attempting to (re)start Rails.
+# pid_file: 'tmp/pids/[RAILS_ENV].pid' # specify your pid_file.
+# host: 'localhost'                    # server hostname.
+# port: 3000                           # server port number.
+# root: '/spec/dummy'                  # Rails' root path.
+# server: thin                         # webserver engine.
+# start_on_start: true                 # will start the server when starting Guard.
+# timeout: 30                          # waits untill restarting the Rails server, in seconds.
+# zeus_plan: server                    # custom plan in zeus, only works with `zeus: true`.
+# zeus: false                          # enables zeus gem.
+# CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
+
+guard 'rails', host: '0.0.0.0' do
+  watch('Gemfile.lock')
+  watch(%r{^(config)/.*})
+  watch(/(.*).config.js/)
 end
