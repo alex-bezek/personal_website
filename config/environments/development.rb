@@ -48,21 +48,24 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.assets.compile = true
-  config.assets.digest = false
-
-  unless ENV['SERVE_ASSETS_FROM_PUBLIC'] == 'true'
+  if ENV['SERVE_ASSETS_FROM_PUBLIC'] == 'true'
+    # Setup to serve fingerprinted files our of public directory like in production mode
+    config.assets.compile = true
+    config.assets.digest = true
+  else
     # Debug mode disables concatenation and preprocessing of assets.
     # This option may cause significant delays in view rendering with a large
     # number of complex assets.
+    config.assets.debug = false
 
+   `rm -rf public/assets`
     config.action_controller.asset_host = proc do |asset_source|
-      'http://localhost:8080/' if asset_source =~ /\/assets\/.*.(js|css)/i
+     'http://localhost:8080/' if asset_source =~ %r{\/(javascripts|stylesheets)\/.*.(js|css)}
     end
 
     if ENV['WEBPACK_DEV_SERVER'] == 'true'
-      webpack_pid = spawn('npm run dev')
-      Process.detach(webpack_pid)
+     webpack_pid = spawn('npm run dev')
+     Process.detach(webpack_pid)
     end
   end
-end
+ end
