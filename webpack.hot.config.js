@@ -34,7 +34,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('[name].css', { allChunks: true }),
+    new ExtractTextPlugin('./stylesheets/[name].css', { allChunks: true }),
     new webpack.optimize.DedupePlugin(),
     new webpack.ProvidePlugin({
       $: "jquery",
