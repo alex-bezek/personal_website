@@ -1,0 +1,18 @@
+= inside_layout 'application' do
+  = render partial: 'application/jumbotron'
+  %section.container
+    #blog_post_container
+      %article.type-system-rounded
+        %h1
+          = yield(:content_header)
+        %h2
+          = yield(:content_short_desc)
+        %p.date
+          = yield(:content_date)
+        %p
+          %span
+            = yield(:content_span)
+        %h3
+          = yield(:content_post_header)
+        .post
+          = yield(:content_post)

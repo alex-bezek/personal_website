@@ -6,6 +6,5 @@
     = stylesheet_link_tag 'application'
   = render partial: 'application/navigation'
   %body
-    %section.container
-      = yield
+    = content_for?(:content) ? yield(:content) : yield
   = javascript_include_tag 'application'

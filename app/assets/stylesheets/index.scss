@@ -3,10 +3,13 @@
 @import 'modules';
 
 body{
-
   section.container{
     @include outer-container;
-    @include span-columns(9);
-    @include shift(3);
+    @include span-columns(8);
+    @include shift(2);
   }
+}
+
+h1.large-header{
+  font-size: 36px
 }
