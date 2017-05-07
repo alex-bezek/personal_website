@@ -1,3 +1,4 @@
+# TODO: Add Brakeman and bundler-audit
 set -e
 bin/setup
 

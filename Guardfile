@@ -110,7 +110,7 @@ end
 
 kill_webpack_cmd = "lsof -n -i:8080 | grep LISTEN | awk '{ print $2 }' | uniq | xargs kill -9"
 guard :shell do
-  watch(/(.*).rb/) { |m| `bundle exec rubcop #{m[0]}` }
+  watch(/(.*).rb/) { |m| `bundle exec rubocop #{m[0]}` }
   watch('Gemfile.lock') { `#{kill_webpack_cmd}` }
   watch(%r{^(config)/.*}) { `#{kill_webpack_cmd}` }
   watch(/(.*).config.js/) { `#{kill_webpack_cmd}` }

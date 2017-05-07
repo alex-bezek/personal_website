@@ -1,25 +1,22 @@
 FROM ruby:2.3.1-alpine
 
-RUN apk update && apk --update add ruby ruby-irb ruby-json ruby-rake \
-    ruby-bigdecimal ruby-io-console libstdc++ tzdata nodejs
+RUN apk update && apk --update add libstdc++ tzdata nodejs python
 
 RUN mkdir /myapp
 WORKDIR /myapp
-ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
+ADD Gemfile* .nvmrc package.json /myapp/
 
-RUN apk --update add --virtual build-dependencies build-base ruby-dev openssl-dev \
-    libc-dev linux-headers && \
+RUN apk --update add --virtual build-dependencies build-base openssl-dev \
+    linux-headers && \
     gem install bundler && \
-    cd /myapp ; bundle install && \
-    apk del build-dependencies
-
-COPY .nvmrc /myapp
-COPY package.json /myapp
-RUN npm install
+    bundle install && \
+    npm install && \
+    apk del build-dependencies build-base openssl-dev
 
 ADD . /myapp
 
+RUN bundle exec rake assets:bourbon
+RUN npm run webpack
 RUN bundle exec rake assets:precompile
 
 RUN chown -R nobody:nogroup /myapp

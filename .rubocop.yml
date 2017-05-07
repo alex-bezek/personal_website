@@ -10,3 +10,8 @@ AllCops:
     - bin/**/*
     - Guardfile
     - node_modules/**/*
+
+# Maximum line length of 120 chars
+Style/LineLength:
+  Max: 120
+  Enabled: true
