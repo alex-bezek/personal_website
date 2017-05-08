@@ -1,0 +1,9 @@
+!!!
+%html
+  %head
+    %title PersonalWebsite's Pattern Lab
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application'
+  %body
+    = content_for?(:content) ? yield(:content) : yield
+  = javascript_include_tag 'application'

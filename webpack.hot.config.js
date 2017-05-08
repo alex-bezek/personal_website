@@ -6,7 +6,7 @@ module.exports = {
   context: __dirname + '/app/assets',
   debug: false,
   entry: {
-    application: './js/index.js'
+    application: './Index.jsx'
   },
   output: {
     filename: './javascripts/[name].js',
@@ -17,8 +17,8 @@ module.exports = {
   module: {
     loaders: [
       {
-         test: /\.js$/,
-         include: /app\/assets\/js|index\.js/,
+         test: /\.jsx$/,
+         include: /app\/assets/,
          loader: 'babel-loader',
          query: {
            presets: ['es2015', 'react'],

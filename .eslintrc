@@ -1,0 +1,31 @@
+// When you write javascript you should follow these soft rules and best practices
+// https://github.com/airbnb/javascript
+
+// This is a link to best practices and enforcer settings for eslint
+// https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+
+// Use this file as a starting point for your project's .eslintrc.
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "max-len": 0,
+    "react/require-default-props": "off", // Disabled the requirement to default all non-required props
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "globals": {
+    "shallow": true,
+    "render": true,
+    "mount": true
+  }
+}
